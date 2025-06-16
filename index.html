@@ -41,6 +41,39 @@
       margin-top: 30px;
       color: #e6c36b;
     }
+    .contact-form {
+      margin-top: 40px;
+      text-align: left;
+      background-color: #111;
+      padding: 30px;
+      border: 1px solid #333;
+      border-radius: 10px;
+    }
+    .contact-form label {
+      display: block;
+      margin-top: 15px;
+      color: #d4af37;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      background-color: #000;
+      border: 1px solid #555;
+      color: #ffd700;
+      font-family: 'Cinzel', serif;
+    }
+    .contact-form button {
+      margin-top: 20px;
+      background-color: #d4af37;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -69,6 +102,23 @@
       Az ARCANUM egy exkluzív emberismereti tanácsadás, mely a testbeszéd, stílus és jelenlét alapján olvassa ki az emberek valódi személyiségét.
       A szolgáltatás kizárólag személyesen érhető el, vezetők és döntéshozók számára.
     </p>
+
+    <div class="contact-form">
+      <h2>Kapcsolatfelvétel</h2>
+      <form>
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email cím:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Üzenet:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Küldés</button>
+      </form>
+    </div>
+
   </main>
   <footer>
     &copy; 2025 ARCANUM Consulting – Minden jog fenntartva.
