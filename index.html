@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARCANUM Consulting</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet" />
   <style>
@@ -10,7 +10,7 @@
       margin: 0;
       font-family: 'Cinzel', serif;
       background-color: #000;
-      color: #d4af37;
+      color: #bfa640; /* sötét arany-sárga */
     }
     header {
       background-color: #111;
@@ -22,13 +22,18 @@
       font-size: 3em;
       margin: 0;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px #d4af37, 0 0 20px #ffd700;
+      color: #bfa640;
+      text-shadow:
+        0 0 6px #bfa640,
+        0 0 12px #e0d473;
     }
     header p {
       font-size: 1.2em;
-      color: #caa944;
+      color: #a89032;
       margin-top: 10px;
       font-style: italic;
+      text-shadow:
+        0 0 3px #a89032;
     }
     main {
       max-width: 800px;
@@ -39,7 +44,10 @@
     .slogan {
       font-size: 1.4em;
       margin-top: 30px;
-      color: #e6c36b;
+      color: #d1bf5a;
+      text-shadow:
+        0 0 5px #d1bf5a,
+        0 0 10px #f1eeb1;
     }
     .section {
       margin: 40px 0;
@@ -47,12 +55,16 @@
     }
     .section h2 {
       font-size: 1.6em;
-      color: #ffd700;
+      color: #d1bf5a;
+      text-shadow:
+        0 0 3px #a88e23;
     }
     .section p {
       font-size: 1.1em;
-      color: #e8c85e;
+      color: #c9b850;
       line-height: 1.6em;
+      text-shadow:
+        0 0 2px #998824;
     }
     .card-container {
       display: flex;
@@ -61,37 +73,51 @@
       margin: 50px 0;
     }
     .price-card {
-      border: 1px solid #444;
+      border: 1px solid #5e5114;
       border-radius: 10px;
       padding: 30px;
-      background-color: #111;
-      color: #ffd700;
+      background-color: #1a1704;
+      color: #d0c46b;
       text-align: left;
-      box-shadow: 0 0 10px #333;
+      box-shadow:
+        0 0 8px #9a8e24cc;
+      transition: box-shadow 0.3s ease;
+    }
+    .price-card:hover {
+      box-shadow:
+        0 0 15px #d1bf5a,
+        0 0 25px #f5f1a1;
     }
     .price-card h3 {
       font-size: 1.4em;
       margin-bottom: 10px;
+      color: #d1bf5a;
+      text-shadow:
+        0 0 6px #bfa640;
     }
     .price-card p {
       font-size: 1em;
-      color: #e8c85e;
+      color: #c9b850;
+      text-shadow:
+        0 0 3px #8c7d19;
     }
     .contact-form {
       margin-top: 40px;
       text-align: left;
       background-color: #111;
       padding: 30px;
-      border: 1px solid #333;
+      border: 1px solid #444011;
       border-radius: 10px;
     }
     .contact-form h2 {
-      color: #ffd700;
+      color: #d1bf5a;
+      text-shadow: 0 0 5px #bfa640;
     }
     .contact-form label {
       display: block;
       margin-top: 15px;
-      color: #d4af37;
+      color: #bfa640;
+      text-shadow: 0 0 2px #9a8b20;
     }
     .contact-form input,
     .contact-form textarea {
@@ -99,52 +125,58 @@
       padding: 10px;
       margin-top: 5px;
       background-color: #000;
-      border: 1px solid #555;
-      color: #ffd700;
+      border: 1px solid #5e5114;
+      color: #d0c46b;
       font-family: 'Cinzel', serif;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #8c7d19;
     }
     .contact-form button {
       margin-top: 20px;
-      background-color: #d4af37;
-      color: #000;
+      background: linear-gradient(145deg, #bfa640, #d1bf5a);
+      color: #1a1704;
       padding: 10px 20px;
       border: none;
       font-weight: bold;
       cursor: pointer;
       font-family: 'Cinzel', serif;
+      box-shadow:
+        0 0 5px #bfa640;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(145deg, #d1bf5a, #f5f1a1);
+      box-shadow:
+        0 0 15px #f5f1a1;
     }
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #777;
+      color: #666022;
     }
     .logo-placeholder {
       width: 120px;
       height: 120px;
       margin: 0 auto 20px;
-      background-color: #222;
-      border: 2px solid #d4af37;
+      background: linear-gradient(135deg, #2a2607, #bfa640);
+      border: 2px solid #bfa640;
       border-radius: 50%;
-    }
-    .contact-form button:hover {
-      background-color: #ffd700;
-      color: #000;
-    }
-    .glow-text {
-      color: #ffd700;
-      text-shadow: 0 0 5px #d4af37, 0 0 10px #ffd700;
+      box-shadow:
+        inset 0 0 10px #d1bf5a;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-placeholder"></div>
-    <h1 class="glow-text">ARCANUM CONSULTING</h1>
+    <h1>ARCANUM CONSULTING</h1>
     <p>A döntés mögött az ember áll – mi látjuk őt.</p>
   </header>
   <main>
-    <p class="slogan glow-text">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
+    <p class="slogan">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
 
     <div class="section">
       <h2>1. Exkluzív figyelem a döntéshozók számára</h2>
@@ -167,7 +199,6 @@
       </p>
     </div>
 
-    <!-- Ár kártyák -->
     <div class="card-container">
       <div class="price-card">
         <h3>ARCANUM | ELSŐ LÁTÁS – 95.000 Ft / 90 perc</h3>
