@@ -11,27 +11,56 @@
       color: #f5f5f5;
       font-family: 'Georgia', serif;
     }
+
     header {
       background: #111;
-      padding: 4rem 2rem;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 3rem;
       border-bottom: 1px solid #444;
     }
-    header h1 {
-      font-size: 3rem;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 48px;
+      margin-right: 1rem;
+    }
+
+    .logo-container h1 {
+      font-size: 2.5rem;
       color: gold;
+      margin: 0;
       letter-spacing: 2px;
     }
-    header p {
-      font-style: italic;
-      margin-top: 0.5rem;
-      color: #ccc;
+
+    .header-text {
+      text-align: right;
     }
+
+    .header-text p {
+      font-style: italic;
+      color: #ccc;
+      margin: 0;
+    }
+
+    .mottos {
+      margin-top: 0.3rem;
+      font-size: 1rem;
+      color: #bbb;
+      text-align: right;
+    }
+
     section {
       max-width: 900px;
       margin: 3rem auto;
       padding: 0 1.5rem;
     }
+
     .package {
       background: #1a1a1a;
       border: 1px solid #333;
@@ -39,17 +68,21 @@
       padding: 2rem;
       margin-bottom: 2rem;
     }
+
     .package h2 {
       color: gold;
       font-size: 1.5rem;
     }
+
     .package p {
       line-height: 1.6;
       color: #ddd;
     }
+
     .philosophy {
       margin-top: 4rem;
     }
+
     footer {
       background: #111;
       padding: 2rem;
@@ -58,10 +91,12 @@
       color: #777;
       font-size: 0.9rem;
     }
+
     a {
       color: gold;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -70,8 +105,18 @@
 <body>
 
   <header>
-    <h1>ARCANUM</h1>
-    <p>Prémium emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
+    <div class="logo-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Key_font_awesome.svg/64px-Key_font_awesome.svg.png" alt="Arcanum logó">
+      <h1>ARCANUM</h1>
+    </div>
+    <div class="header-text">
+      <p>Prémium emberismereti tanácsadás</p>
+      <div class="mottos">
+        <div>„Látni, amit mások nem látnak.”</div>
+        <div>„Az első benyomás sosem hazudik.”</div>
+        <div>„Titok. Elemzés. Döntés.”</div>
+      </div>
+    </div>
   </header>
 
   <section>
