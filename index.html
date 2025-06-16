@@ -54,6 +54,29 @@
       color: #e8c85e;
       line-height: 1.6em;
     }
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 50px 0;
+    }
+    .price-card {
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 30px;
+      background-color: #111;
+      color: #ffd700;
+      text-align: left;
+      box-shadow: 0 0 10px #333;
+    }
+    .price-card h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    .price-card p {
+      font-size: 1em;
+      color: #e8c85e;
+    }
     .contact-form {
       margin-top: 40px;
       text-align: left;
@@ -142,6 +165,22 @@
       <p>
         Az ARCANUM nem csak egy szolgáltatás – ez egy életérzés. Az első pillanattól kezdve prémium környezetet és hatékony, karakterközpontú döntéstámogatást biztosítunk.
       </p>
+    </div>
+
+    <!-- Ár kártyák -->
+    <div class="card-container">
+      <div class="price-card">
+        <h3>ARCANUM | ELSŐ LÁTÁS – 95.000 Ft / 90 perc</h3>
+        <p>Egyetlen találkozás. Az első benyomásból olvasunk: jelenlét, stílus, testbeszéd alapján mély személyiségprofil vezetők részére.</p>
+      </div>
+      <div class="price-card">
+        <h3>ARCANUM | DÖNTÉS ELŐTT – 75.000 Ft / 60–75 perc</h3>
+        <p>Bizalmi döntés előtt áll? Személyiség-elemzés az adott személyről, hogy Ön biztos kézzel választhasson.</p>
+      </div>
+      <div class="price-card">
+        <h3>ARCANUM | PRIVATE RETAINER – 290.000 Ft / hó</h3>
+        <p>Teljes hozzáférés egy hónapon át. Exkluzív tanácsadás, sürgős döntési támogatás és diszkrét jelenlét a legfontosabb pillanatokban.</p>
+      </div>
     </div>
 
     <div class="contact-form">
