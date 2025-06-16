@@ -2,28 +2,58 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARCANUM Consulting</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet" />
   <style>
-    /* Alapok */
+    /* Alap body és animált bársony hatású háttér */
     body {
       margin: 0;
       font-family: 'Cinzel', serif;
       background-color: #0a0a0a;
-      background-image: radial-gradient(circle at center, #1c1c1c, #0a0a0a);
-      color: #bfa640; /* sötét arany alap */
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.04), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03), transparent 70%);
+      background-repeat: no-repeat;
+      background-size: 200% 200%;
+      animation: subtleShine 15s ease-in-out infinite;
+      color: #bfa640; /* sötét arany szín */
     }
-    /* Fejléc */
+
+    @keyframes subtleShine {
+      0%, 100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+      }
+      50% {
+        background-position: 100% 100%, 0% 0%, 55% 55%;
+      }
+    }
+
+    /* Fejléc stílus */
     header {
       background-color: #111;
       padding: 40px 20px;
       text-align: center;
       border-bottom: 1px solid #444;
-      background-image: radial-gradient(circle at top center, #222, #111);
-      box-shadow: inset 0 0 50px #3d2e00; /* bársony, enyhe visszatükröződés */
+      background-image:
+        radial-gradient(circle at top center, #222, #111),
+        radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.07), transparent 60%);
+      box-shadow: inset 0 0 60px #3d2e00;
       position: relative;
+      animation: headerShine 10s ease-in-out infinite;
     }
+
+    @keyframes headerShine {
+      0%, 100% {
+        background-position: 40% 20%;
+      }
+      50% {
+        background-position: 60% 40%;
+      }
+    }
+
+    /* Logó helye */
     .logo-placeholder {
       width: 120px;
       height: 120px;
@@ -31,90 +61,107 @@
       background-color: #222;
       border: 2px solid #bfa640;
       border-radius: 50%;
+      box-shadow: 0 0 8px #bfa640;
       position: relative;
-      box-shadow: 0 0 15px #bfa640;
-      /* Egyszerű csillanás effekt */
     }
-    /* Domború fejléces szöveg */
+
+    /* Csillanó effekt a logó és fejléc szövegnek */
+    .glow-text {
+      color: #bfa640;
+      position: relative;
+      text-shadow:
+        0 0 5px #bfa640,
+        0 0 10px #c4b14f,
+        0 0 20px #d4c366;
+      overflow: visible;
+    }
+
+    /* Domború hatású fejléc szöveg */
     header h1 {
       font-size: 3em;
       margin: 0;
       letter-spacing: 2px;
       color: #bfa640;
-      position: relative;
       text-shadow:
-        1px 1px 0 #6b5a15,
-        2px 2px 0 #9c8730,
-        3px 3px 6px rgba(255, 255, 255, 0.2);
+        0 2px 0 #8c7a20,
+        0 4px 0 #735f19,
+        0 6px 6px rgba(0, 0, 0, 0.8);
+      font-weight: 800;
+      text-transform: uppercase;
     }
-    /* Csillanó pötty a fejléc szövegén */
-    header h1::after {
-      content: '';
-      position: absolute;
-      top: 15%;
-      left: 20%;
-      width: 6px;
-      height: 6px;
-      background: radial-gradient(circle, #fff 0%, transparent 70%);
-      filter: drop-shadow(0 0 3px #fff);
-      border-radius: 50%;
-      animation: twinkle 3s infinite ease-in-out;
-      pointer-events: none;
+
+    header p {
+      font-size: 1.2em;
+      color: #c9b659;
+      margin-top: 10px;
+      font-style: italic;
+      text-shadow: none;
+      opacity: 0.8;
     }
-    @keyframes twinkle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.7); }
-    }
-    /* Szlogen */
-    .slogan {
-      font-size: 1.4em;
-      margin-top: 30px;
-      color: #bfa640;
-      text-shadow:
-        0 0 3px #8c7d19;
-    }
+
     main {
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
     }
+
+    .slogan {
+      font-size: 1.4em;
+      margin-top: 30px;
+      color: #c9b659;
+      opacity: 0.85;
+    }
+
     .section {
       margin: 40px 0;
       text-align: left;
     }
+
     .section h2 {
       font-size: 1.6em;
-      color: #d4af37;
+      color: #d4bf5f;
     }
+
     .section p {
       font-size: 1.1em;
-      color: #e8c85e;
+      color: #d6c76a;
       line-height: 1.6em;
+      opacity: 0.9;
     }
+
     .card-container {
       display: flex;
       flex-direction: column;
       gap: 30px;
       margin: 50px 0;
     }
+
     .price-card {
       border: 1px solid #444;
       border-radius: 10px;
       padding: 30px;
       background-color: #111;
-      color: #d4af37;
+      color: #d4bf5f;
       text-align: left;
-      box-shadow: 0 0 10px #3a2c00;
+      box-shadow: 0 0 10px #3d2e00;
+      transition: box-shadow 0.3s ease;
     }
+
+    .price-card:hover {
+      box-shadow: 0 0 20px #bfa640;
+    }
+
     .price-card h3 {
       font-size: 1.4em;
       margin-bottom: 10px;
     }
+
     .price-card p {
       font-size: 1em;
-      color: #e8c85e;
+      color: #d6c76a;
     }
+
     .contact-form {
       margin-top: 40px;
       text-align: left;
@@ -123,48 +170,52 @@
       border: 1px solid #333;
       border-radius: 10px;
     }
+
     .contact-form h2 {
-      color: #d4af37;
+      color: #d4bf5f;
     }
+
     .contact-form label {
       display: block;
       margin-top: 15px;
       color: #bfa640;
     }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      background-color: #0a0a0a;
+      background-color: #000;
       border: 1px solid #555;
-      color: #d4af37;
+      color: #d4bf5f;
       font-family: 'Cinzel', serif;
       font-size: 1em;
     }
+
     .contact-form button {
       margin-top: 20px;
       background-color: #bfa640;
-      color: #0a0a0a;
+      color: #000;
       padding: 10px 20px;
       border: none;
       font-weight: bold;
       cursor: pointer;
       font-family: 'Cinzel', serif;
-      font-size: 1.1em;
+      font-size: 1em;
       transition: background-color 0.3s ease;
     }
+
     .contact-form button:hover {
-      background-color: #d4af37;
+      background-color: #d4bf5f;
       color: #000;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #666;
-      background-color: #111;
-      border-top: 1px solid #333;
+      color: #777;
     }
   </style>
 </head>
@@ -172,9 +223,11 @@
   <header>
     <div class="logo-placeholder"></div>
     <h1>ARCANUM CONSULTING</h1>
-    <p class="slogan">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
+    <p>A döntés mögött az ember áll – mi látjuk őt.</p>
   </header>
   <main>
+    <p class="slogan">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
+
     <div class="section">
       <h2>1. Exkluzív figyelem a döntéshozók számára</h2>
       <p>
@@ -202,26 +255,26 @@
         <p>Egyetlen találkozás. Az első benyomásból olvasunk: jelenlét, stílus, testbeszéd alapján mély személyiségprofil vezetők részére.</p>
       </div>
       <div class="price-card">
-        <h3>ARCANUM | DÖNTÉS ELŐTT – 75.000 Ft / 60–75 perc</h3>
-        <p>Bizalmi döntés előtt áll? Személyiség-elemzés az adott személyről, hogy Ön biztos kézzel választhasson.</p>
+        <h3>ARCANUM | DÖNTÉS ELŐTT – 75.000 Ft / 60-75 perc</h3>
+        <p>Konkrét személy elemzése döntés előtti helyzetben, kockázatok és lehetőségek gyors felmérése.</p>
       </div>
       <div class="price-card">
         <h3>ARCANUM | PRIVATE RETAINER – 290.000 Ft / hó</h3>
-        <p>Teljes hozzáférés egy hónapon át. Exkluzív tanácsadás, sürgős döntési támogatás és diszkrét jelenlét a legfontosabb pillanatokban.</p>
+        <p>Havidíjas személyes és telefonos tanácsadói hozzáférés, azonnali segítség bármikor, rugalmas időbeosztásban.</p>
       </div>
     </div>
 
     <div class="contact-form">
-      <h2>Vegye fel velünk a kapcsolatot</h2>
+      <h2>Kapcsolat</h2>
       <form>
         <label for="name">Név</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" placeholder="Teljes név" required />
 
-        <label for="email">Email cím</label>
-        <input type="email" id="email" name="email" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="email@pelda.hu" required />
 
         <label for="message">Üzenet</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="4" placeholder="Kérdés vagy üzenet"></textarea>
 
         <button type="submit">Küldés</button>
       </form>
