@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARCANUM - Emberismeret művészete</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background-color: #0b0b0b;
+      color: #d4af37;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #d4af37;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+    header p {
+      font-style: italic;
+      margin-top: 0.5rem;
+      font-size: 1.25rem;
+      color: #f0d675;
+    }
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #d4af37;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>ARCANUM</h1>
+    <p>Emberismeret művészete – Személyes tanácsadás csak élőben.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Szolgáltatások</h2>
+      <ul>
+        <li><strong>ARCANUM | ELSŐ LÁTÁS</strong> – 95.000 Ft / 90 perc<br />Személyiségprofil első benyomás alapján.</li>
+        <li><strong>ARCANUM | DÖNTÉS ELŐTT</strong> – 75.000 Ft / 60-75 perc<br />Konkrét személy megítélése döntési helyzetben.</li>
+        <li><strong>ARCANUM | PRIVATE RETAINER</strong> – 290.000 Ft / hó<br />Havidíjas privát tanácsadói hozzáférés, személyes és telefonos konzultációval.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Kapcsolat</h2>
+      <p>Email: <a href="mailto:info@arcanum.hu">info@arcanum.hu</a></p>
+      <p>Telefon: +36 20 123 4567</p>
+      <p>Konzultáció kizárólag személyesen, előzetes egyeztetéssel.</p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 ARCANUM. Minden jog fenntartva.
+  </footer>
+</body>
+</html>
