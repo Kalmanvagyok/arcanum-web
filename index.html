@@ -41,6 +41,19 @@
       margin-top: 30px;
       color: #e6c36b;
     }
+    .section {
+      margin: 40px 0;
+      text-align: left;
+    }
+    .section h2 {
+      font-size: 1.6em;
+      color: #ffd700;
+    }
+    .section p {
+      font-size: 1.1em;
+      color: #e8c85e;
+      line-height: 1.6em;
+    }
     .contact-form {
       margin-top: 40px;
       text-align: left;
@@ -48,6 +61,9 @@
       padding: 30px;
       border: 1px solid #333;
       border-radius: 10px;
+    }
+    .contact-form h2 {
+      color: #ffd700;
     }
     .contact-form label {
       display: block;
@@ -88,20 +104,45 @@
       border: 2px solid #d4af37;
       border-radius: 50%;
     }
+    .contact-form button:hover {
+      background-color: #ffd700;
+      color: #000;
+    }
+    .glow-text {
+      color: #ffd700;
+      text-shadow: 0 0 5px #d4af37, 0 0 10px #ffd700;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-placeholder"></div>
-    <h1>ARCANUM CONSULTING</h1>
+    <h1 class="glow-text">ARCANUM CONSULTING</h1>
     <p>A döntés mögött az ember áll – mi látjuk őt.</p>
   </header>
   <main>
-    <p class="slogan">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
-    <p>
-      Az ARCANUM egy exkluzív emberismereti tanácsadás, mely a testbeszéd, stílus és jelenlét alapján olvassa ki az emberek valódi személyiségét.
-      A szolgáltatás kizárólag személyesen érhető el, vezetők és döntéshozók számára.
-    </p>
+    <p class="slogan glow-text">Emberismereti tanácsadás vezetőknek és döntéshozóknak</p>
+
+    <div class="section">
+      <h2>1. Exkluzív figyelem a döntéshozók számára</h2>
+      <p>
+        Az ARCANUM Consulting nem tömegpiacra szól. Minden tanácsadás személyre szabott, zárt körű és teljes diszkrécióval zajlik, kizárólag vezetőknek és döntéshozóknak.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. Emberismeret, ami túlmutat a felszínen</h2>
+      <p>
+        A testbeszéd, a stílus, a megjelenés – ezek mind árulkodnak. Mi olvasunk ezekből, és segítünk Önnek helyesen értelmezni a másik ember valódi szándékait és karakterét.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>3. Luxusélmény és eredményorientált tanácsadás</h2>
+      <p>
+        Az ARCANUM nem csak egy szolgáltatás – ez egy életérzés. Az első pillanattól kezdve prémium környezetet és hatékony, karakterközpontú döntéstámogatást biztosítunk.
+      </p>
+    </div>
 
     <div class="contact-form">
       <h2>Kapcsolatfelvétel</h2>
