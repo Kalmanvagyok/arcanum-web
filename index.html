@@ -4,6 +4,16 @@ import { Button } from "@/components/ui/button";
 export default function ArcanumHomepage() {
   return (
     <main className="min-h-screen bg-black text-gold font-serif">
+      {/* Navigation */}
+      <nav className="flex justify-between items-center px-6 py-4 bg-black border-b border-gold sticky top-0 z-50">
+        <div className="text-2xl font-bold text-gold tracking-wider">ARCANUM</div>
+        <ul className="flex space-x-6 text-sm md:text-base text-gray-300">
+          <li><a href="#services" className="hover:text-gold">Szolgáltatások</a></li>
+          <li><a href="#about" className="hover:text-gold">Rólunk</a></li>
+          <li><a href="#contact" className="hover:text-gold">Kapcsolat</a></li>
+        </ul>
+      </nav>
+
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center py-32 px-6 bg-black">
         <h1 className="text-5xl md:text-7xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 uppercase">
@@ -18,7 +28,7 @@ export default function ArcanumHomepage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 px-6 bg-black text-white max-w-6xl mx-auto">
+      <section id="services" className="py-24 px-6 bg-black text-white max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-semibold text-gold text-center mb-12">
           Szolgáltatási csomagok
         </h2>
@@ -48,6 +58,36 @@ export default function ArcanumHomepage() {
           </div>
         </div>
       </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 bg-black text-white max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-semibold text-gold text-center mb-8">
+          Rólunk
+        </h2>
+        <p className="text-lg text-gray-300 leading-relaxed text-center">
+          Az ARCANUM egyedülálló emberismereti tanácsadást kínál, ahol a személyes jelenlétből, testbeszédből, stílusból és jelenlétből olvassuk ki a valódi személyiséget. A szolgáltatás kizárólag személyesen érhető el – mert az igazán fontos döntések nem bízhatók megérzésekre vagy algoritmusokra. Az alapító, Kálmán, több mint 20 éves tapasztalattal és rendkívüli intuitív képességgel dekódolja az emberek belső világát.
+        </p>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-6 bg-black text-white max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-semibold text-gold text-center mb-8">
+          Kapcsolat
+        </h2>
+        <p className="text-lg text-gray-300 text-center mb-6">
+          Ha kérdésed van vagy időpontot foglalnál, írj az alábbi email címre vagy keress telefonon.
+        </p>
+        <div className="text-center text-lg text-gold">
+          <p>Email: <a href="mailto:kapcsolat@arcanum.hu" className="hover:underline">kapcsolat@arcanum.hu</a></p>
+          <p className="mt-2">Telefon: <a href="tel:+36201234567" className="hover:underline">+36 20 123 4567</a></p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-gray-500 text-sm text-center py-8 border-t border-gold mt-12">
+        <p>&copy; {new Date().getFullYear()} ARCANUM. Minden jog fenntartva.</p>
+        <p className="mt-2">Exkluzív tanácsadás vezetőknek – csak személyesen, csak valóságosan.</p>
+      </footer>
     </main>
   );
 }
