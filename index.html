@@ -1,148 +1,53 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-  <meta charset="UTF-8">
-  <title>ARCANUM – Emberismeret. Első látásra.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Segoe+UI&display=swap" rel="stylesheet">
+import React from "react";
+import { Button } from "@/components/ui/button";
 
-  <style>
-    body {
-      margin: 0;
-      background-color: #000000;
-      color: #C8C8C8;
-      font-family: 'Segoe UI', sans-serif;
-    }
+export default function ArcanumHomepage() {
+  return (
+    <main className="min-h-screen bg-black text-gold font-serif">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center text-center py-32 px-6 bg-black">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 uppercase">
+          ARCANUM
+        </h1>
+        <p className="mt-4 text-lg md:text-2xl max-w-2xl text-gray-300 italic">
+          Emberismeret első látásra. Exkluzív tanácsadás testbeszédből, jelenlétből, valóságból.
+        </p>
+        <Button className="mt-8 px-8 py-4 text-lg rounded-2xl bg-gold text-black hover:bg-gold/90 shadow-lg">
+          Időpontfoglalás
+        </Button>
+      </section>
 
-    header {
-      background-color: #0D1B2A;
-      padding: 100px 20px;
-      text-align: center;
-    }
+      {/* Services Section */}
+      <section className="py-24 px-6 bg-black text-white max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-semibold text-gold text-center mb-12">
+          Szolgáltatási csomagok
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-gray-900 p-6 rounded-2xl shadow-xl border border-gold">
+            <h3 className="text-2xl font-bold text-gold mb-2">ELSŐ LÁTÁS</h3>
+            <p className="text-sm text-gray-300 mb-4">
+              90 perc személyes konzultáció – személyiségprofil első benyomás alapján.
+            </p>
+            <p className="text-lg font-semibold text-white">95.000 Ft</p>
+          </div>
 
-    header h1 {
-      font-family: 'Cinzel', serif;
-      color: #D4AF37;
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
+          <div className="bg-gray-900 p-6 rounded-2xl shadow-xl border border-gold">
+            <h3 className="text-2xl font-bold text-gold mb-2">DÖNTÉS ELŐTT</h3>
+            <p className="text-sm text-gray-300 mb-4">
+              60-75 perc elemzés konkrét személyről döntéshelyzetben.
+            </p>
+            <p className="text-lg font-semibold text-white">75.000 Ft</p>
+          </div>
 
-    header p {
-      font-size: 20px;
-      color: #C8C8C8;
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      font-family: 'Cinzel', serif;
-      color: #D4AF37;
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.8;
-      margin-bottom: 25px;
-    }
-
-    .highlight {
-      color: #D4AF37;
-      font-weight: bold;
-    }
-
-    .package-boxes {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .package {
-      border: 1px solid #D4AF37;
-      padding: 30px;
-      border-radius: 8px;
-      background-color: #0D1B2A;
-    }
-
-    .package h3 {
-      font-family: 'Cinzel', serif;
-      color: #D4AF37;
-      margin-bottom: 10px;
-    }
-
-    .package p {
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- HERO SZEKCIÓ -->
-  <header>
-    <h1>ARCANUM</h1>
-    <p>Emberismeret. Első látásra. – Tanácsadás vezetőknek, döntéshozóknak, vállalkozóknak.</p>
-  </header>
-
-  <!-- SZOLGÁLTATÁSI CSOMAGOK -->
-  <section id="packages">
-    <h2>Szolgáltatások</h2>
-    <div class="package-boxes">
-      <div class="package">
-        <h3>ARCANUM | ELSŐ LÁTÁS</h3>
-        <p>95.000 Ft / 90 perc</p>
-        <p>Az első benyomásból kiolvasott személyiségprofil – testbeszéd, jelenlét, stílus alapján.</p>
-      </div>
-      <div class="package">
-        <h3>ARCANUM | DÖNTÉS ELŐTT</h3>
-        <p>75.000 Ft / 60–75 perc</p>
-        <p>Kritikus helyzetben segít dönteni egy személy megbízhatóságáról vagy karakteréről.</p>
-      </div>
-      <div class="package">
-        <h3>ARCANUM | PRIVATE RETAINER</h3>
-        <p>290.000 Ft / hó</p>
-        <p>Exkluzív havidíjas tanácsadói kapcsolat – személyes hozzáférés, folyamatos bizalmi jelenlét.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MIÉRT MŰKÖDIK -->
-  <section id="philosophy" style="background-color: #000000;">
-    <h2>Miért működik az ARCANUM?</h2>
-    <p class="highlight">Nem csak amit mond, hanem <em>ahogy belép</em> – ott kezdődik a dekódolás.</p>
-    <p>
-      Az ARCANUM személyiség-feltérképezés nem kérdőívekre és hosszú beszélgetésekre épül.
-      Az első 10 másodperc testbeszéde, megjelenése, stílusa – ezekből dekódoljuk a karaktert.
-    </p>
-    <p>
-      A módszer ötvözi a nonverbális kommunikáció olvasását, intuitív értelmezést és több mint 20 év
-      emberismereti tapasztalatát. Nem jóslás, hanem koncentrált figyelem és precíz következtetés.
-    </p>
-    <p class="highlight">Minden találkozás egy tükör. Mi azt mutatjuk meg, amit mások nem mernek kimondani.</p>
-  </section>
-
-  <!-- CÉLCSOPORT MEGSZÓLÍTÁSA -->
-  <section id="target-audience" style="background-color: #0D1B2A;">
-    <h2>ARCANUM az Ön oldalán</h2>
-    <p>
-      Ön vezető, döntéshozó, vállalkozó. Naponta kell embereket választania, megbízni bennük vagy megítélni, vajon alkalmasak-e egy szerepre.
-      A hagyományos módszerek sokszor vakfoltot hagynak.
-    </p>
-    <p>
-      Az ARCANUM tanácsadás ott kezdődik, ahol a megérzés megszólal – és rendszerbe foglalja azt, amit Ön már sejt, de még nem tud megfogalmazni.
-    </p>
-    <p>
-      Ez a szolgáltatás nem tömegtermék. Nem sablonos. Nem online. Ez egy élő jelenlétből fakadó intuitív dekódolás.
-      Csak Ön, én, és az igazság, amit a testbeszéd és jelenlét hordoz.
-    </p>
-    <p class="highlight">Diszkrét. Precíz. Első látásra hat.</p>
-  </section>
-
-</body>
-</html>
+          <div className="bg-gray-900 p-6 rounded-2xl shadow-xl border border-gold">
+            <h3 className="text-2xl font-bold text-gold mb-2">PRIVATE RETAINER</h3>
+            <p className="text-sm text-gray-300 mb-4">
+              Havi privát tanácsadói elérés személyesen és telefonon.
+            </p>
+            <p className="text-lg font-semibold text-white">290.000 Ft / hó</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
