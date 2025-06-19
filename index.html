@@ -1,269 +1,125 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ARCANUM</title>
-  <style>
-    /* Alap stílusok */
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background-color: #000;
-      color: #d4af37; /* sárgaarany */
-      line-height: 1.6;
-    }
-    a {
-      color: #d4af37;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Navigáció */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      background-color: #000;
-      border-bottom: 1px solid #d4af37;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      color: #d4af37;
-    }
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-      font-size: 1rem;
-      color: #ccc;
-    }
-    nav ul li a:hover {
-      color: #d4af37;
-    }
-
-    /* Hero szekció */
-    .hero {
-      text-align: center;
-      padding: 6rem 1.5rem;
-      background-color: #000;
-      color: #d4af37;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: bold;
-      letter-spacing: 0.15em;
-      background: linear-gradient(90deg, #f9d976, #f39f86);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-      text-transform: uppercase;
-    }
-    .hero p {
-      margin-top: 1rem;
-      font-style: italic;
-      font-size: 1.25rem;
-      color: #ccc;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero button {
-      margin-top: 2rem;
-      background-color: #d4af37;
-      border: none;
-      padding: 1rem 3rem;
-      font-size: 1.125rem;
-      font-weight: bold;
-      color: #000;
-      border-radius: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.7);
-      transition: background-color 0.3s ease;
-    }
-    .hero button:hover {
-      background-color: #b38f1c;
-    }
-
-    /* Szolgáltatások szekció */
-    #services {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
-      color: #fff;
-    }
-    #services h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #d4af37;
-      margin-bottom: 3rem;
-    }
-    .service-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .service-card {
-      background-color: #222;
-      border: 1px solid #d4af37;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-    }
-    .service-card h3 {
-      color: #d4af37;
-      margin-top: 0;
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    .service-card p {
-      color: #ccc;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .service-card .price {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: #fff;
-    }
-
-    /* Rólunk szekció */
-    #about {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
-      color: #fff;
-      text-align: center;
-    }
-    #about h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #d4af37;
-      margin-bottom: 2rem;
-    }
-    #about p {
-      font-size: 1.125rem;
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    /* Kapcsolat szekció */
-    #contact {
-      max-width: 700px;
-      margin: 4rem auto 6rem;
-      padding: 0 1.5rem;
-      color: #fff;
-      text-align: center;
-    }
-    #contact h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #d4af37;
-      margin-bottom: 2rem;
-    }
-    #contact p {
-      font-size: 1.125rem;
-      color: #ccc;
-      margin-bottom: 1.5rem;
-    }
-    #contact a {
-      color: #d4af37;
-    }
-    #contact a:hover {
-      text-decoration: underline;
-    }
-
-    /* Lábléc */
-    footer {
-      background-color: #000;
-      color: #777;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-top: 1px solid #d4af37;
-      font-size: 0.9rem;
-    }
-    footer p {
-      margin: 0.5rem 0;
-    }
-
-    /* Reszponzív */
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 3rem;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARCANUM Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Cinzel', serif;
+        background-image: url('leather-texture.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+        color: #d4af37;
       }
-      nav ul {
+
+      header {
+        text-align: center;
+        padding: 80px 20px 40px 20px;
+      }
+
+      .logo {
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin: 0;
+        color: #d4af37;
+        text-shadow: 1px 1px 2px black;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 10px;
+        color: #bfa96d;
+        text-shadow: 1px 1px 2px black;
+      }
+
+      nav {
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      nav a {
+        color: #d4af37;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #ffffff;
+      }
+
+      .section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #d4af37;
+      }
+
+      .section p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #eee2ba;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        color: #8c7c52;
         font-size: 0.9rem;
       }
-    }
-  </style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="logo-arcanum.png" alt="ARCANUM Logo" class="logo" />
+      <h1>ARCANUM</h1>
+      <h2>CONSULTING</h2>
+    </header>
 
-  <nav>
-    <div class="logo">ARCANUM</div>
-    <ul>
-      <li><a href="#services">Szolgáltatások</a></li>
-      <li><a href="#about">Rólunk</a></li>
-      <li><a href="#contact">Kapcsolat</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <a href="#services">Szolgáltatások</a>
+      <a href="#about">Rólunk</a>
+      <a href="#contact">Kapcsolat</a>
+    </nav>
 
-  <section class="hero">
-    <h1>ARCANUM</h1>
-    <p>Emberismeret első látásra. Exkluzív tanácsadás testbeszédből, jelenlétből, valóságból.</p>
-    <button>Időpontfoglalás</button>
-  </section>
-
-  <section id="services">
-    <h2>Szolgáltatási csomagok</h2>
-    <div class="service-cards">
-      <div class="service-card">
-        <h3>ELSŐ LÁTÁS</h3>
-        <p>90 perc személyes konzultáció – személyiségprofil első benyomás alapján.</p>
-        <p class="price">95.000 Ft</p>
-      </div>
-      <div class="service-card">
-        <h3>DÖNTÉS ELŐTT</h3>
-        <p>60-75 perc elemzés konkrét személyről döntéshelyzetben.</p>
-        <p class="price">75.000 Ft</p>
-      </div>
-      <div class="service-card">
-        <h3>PRIVATE RETAINER</h3>
-        <p>Havi privát tanácsadói elérés személyesen és telefonon.</p>
-        <p class="price">290.000 Ft / hó</p>
-      </div>
+    <div class="section" id="services">
+      <h3>Szolgáltatásaink</h3>
+      <p>Prémium emberismereti tanácsadás vezetők, döntéshozók és vállalkozók számára. Személyes jelenlétből, testbeszédből és stílusból kiolvasott azonnali személyiség-dekódolás.</p>
     </div>
-  </section>
 
-  <section id="about">
-    <h2>Rólunk</h2>
-    <p>
-      Az ARCANUM egyedülálló emberismereti tanácsadást kínál, ahol a személyes jelenlétből, testbeszédből, stílusból és jelenlétből olvassuk ki a valódi személyiséget. A szolgáltatás kizárólag személyesen érhető el – mert az igazán fontos döntések nem bízhatók megérzésekre vagy algoritmusokra. Az alapító, Kálmán, több mint 20 éves tapasztalattal és rendkívüli intuitív képességgel dekódolja az emberek belső világát.
-    </p>
-  </section>
+    <div class="section" id="about">
+      <h3>Rólunk</h3>
+      <p>Az ARCANUM Consulting az exkluzivitás és az emberismeret legmagasabb szintjét képviseli. Tanácsadásunk kizárólag személyes jelenléttel történik, titoktartás mellett, misztikus eleganciával.</p>
+    </div>
 
-  <section id="contact">
-    <h2>Kapcsolat</h2>
-    <p>Ha kérdésed van vagy időpontot foglalnál, írj az alábbi email címre vagy keress telefonon.</p>
-    <p>Email: <a href="mailto:kapcsolat@arcanum.hu">kapcsolat@arcanum.hu</a></p>
-    <p>Telefon: <a href="tel:+36201234567">+36 20 123 4567</a></p>
-  </section>
+    <div class="section" id="contact">
+      <h3>Kapcsolat</h3>
+      <p>Kérjük, lépj kapcsolatba velünk személyes konzultáció egyeztetéséhez. Email: <a href="mailto:info@arcanum.hu" style="color: #d4af37; text-decoration: underline;">info@arcanum.hu</a></p>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 ARCANUM. Minden jog fenntartva.</p>
-    <p>Exkluzív tanácsadás vezetőknek – csak személyesen, csak valóságosan.</p>
-  </footer>
-
-</body>
+    <footer>
+      &copy; 2025 ARCANUM Consulting. Minden jog fenntartva.
+    </footer>
+  </body>
 </html>
