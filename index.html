@@ -6,6 +6,9 @@
   <title>ARCANUM</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --arcanum-gold: #d4af37;
+    }
     body {
       margin: 0;
       font-family: 'Cinzel', serif;
@@ -14,47 +17,49 @@
       background-size: 250px 250px;
       background-repeat: repeat;
       background-attachment: fixed;
-      color: #d4af37;
+      color: var(--arcanum-gold);
     }
     header {
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 40px 20px 20px 20px;
+      position: relative;
+      background-color: #000;
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px 60px 20px;
       text-align: center;
-      border-bottom: 1px solid #d4af37;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
     }
     header img {
-      height: 120px;
-      margin-bottom: 10px;
+      display: block;
+      margin: 0 auto 20px auto;
+      height: 100px;
     }
-    header h1, header h2 {
+    header h1 {
+      font-size: 3rem;
       margin: 0;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      color: #d4af37;
-      text-shadow: 0 0 3px #a97c00, 0 0 6px #f7e18f, 0 0 9px #d4af37;
+      color: var(--arcanum-gold);
+      text-shadow: 0 0 2px #fff2b1, 0 0 6px #e5c16c, 0 0 12px #d4af37;
     }
     header h2 {
-      margin-top: 5px;
-      font-size: 1rem;
-      font-weight: normal;
+      font-size: 1.1rem;
       letter-spacing: 4px;
+      margin-top: 10px;
+      color: var(--arcanum-gold);
+      text-shadow: 0 0 2px #fff2b1, 0 0 5px #b78c20, 0 0 10px #d4af37;
     }
     nav {
-      text-align: center;
-      margin-top: 10px;
+      margin-top: 20px;
     }
     nav a {
       margin: 0 15px;
       text-decoration: none;
-      color: #d4af37;
+      color: var(--arcanum-gold);
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-size: 0.9rem;
     }
     .hero {
-      background: rgba(0, 0, 0, 0.7);
-      height: 60vh;
+      background: #000;
+      height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,29 +67,37 @@
     }
     .hero h2 {
       font-size: 2rem;
-      background-color: rgba(0, 0, 0, 0.75);
+      color: var(--arcanum-gold);
+      text-shadow: 0 0 3px #b78c20, 0 0 8px #d4af37, 0 0 12px #f7e18f;
+      border: 1px solid var(--arcanum-gold);
       padding: 20px;
-      border: 1px solid #d4af37;
+      background-color: rgba(0, 0, 0, 0.7);
     }
     .section {
-      padding: 60px 20px;
-      max-width: 1000px;
+      padding: 80px 20px;
+      max-width: 960px;
       margin: 0 auto;
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
     }
     .section h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 20px;
-      border-bottom: 1px solid #d4af37;
+      border-bottom: 1px solid var(--arcanum-gold);
       padding-bottom: 10px;
+    }
+    .section ul {
+      padding-left: 20px;
+    }
+    .section li {
+      margin-bottom: 12px;
     }
     footer {
       background-color: #000;
       text-align: center;
-      padding: 20px;
-      border-top: 1px solid #d4af37;
+      padding: 30px 10px;
+      border-top: 1px solid var(--arcanum-gold);
       font-size: 0.9rem;
     }
   </style>
@@ -121,7 +134,7 @@
 
   <div class="section" id="kapcsolat">
     <h3>Kapcsolat</h3>
-    <p>Írjon nekünk: <a href="mailto:info@arcanum.hu" style="color:#d4af37; text-decoration: underline;">info@arcanum.hu</a></p>
+    <p>Írjon nekünk: <a href="mailto:info@arcanum.hu" style="color:var(--arcanum-gold); text-decoration: underline;">info@arcanum.hu</a></p>
   </div>
 
   <footer>
