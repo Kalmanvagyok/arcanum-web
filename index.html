@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARCANUM</title>
   <style>
     :root {
@@ -18,10 +18,7 @@
       font-family: var(--arcanum-font);
       color: var(--arcanum-gold);
       text-transform: uppercase;
-    }
-
-    body {
-      background-image: url('leather.png'); /* Eredeti háttérkép */
+      background-image: url('leather.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -34,11 +31,15 @@
     .logo {
       margin-top: 40px;
       z-index: 10;
+      max-width: 95vw;
+      width: 600px;
     }
 
     .logo img {
-      height: 600px;
-      max-width: 95vw;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     .nav {
@@ -46,6 +47,9 @@
       justify-content: center;
       gap: 60px;
       margin-top: 30px;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      width: 90%;
     }
 
     .nav a {
@@ -53,6 +57,7 @@
       font-size: 2rem;
       color: var(--arcanum-gold);
       transition: color 0.3s ease, transform 0.2s ease;
+      white-space: nowrap;
     }
 
     .nav a:hover {
@@ -78,6 +83,7 @@
       background: rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(1.5px);
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+      box-sizing: border-box;
     }
 
     .accordion {
@@ -103,7 +109,17 @@
       background: rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(1.5px);
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+      box-sizing: border-box;
     }
+
+    /* Képek a szolgáltatás részekben */
+    .accordion img {
+      max-width: 100%;
+      height: auto;
+      margin: 2rem auto;
+      display: block;
+    }
+
     .scroll-to-top {
       position: fixed;
       bottom: 30px;
@@ -132,6 +148,7 @@
       flex-direction: column;
       gap: 1.5rem;
       font-family: var(--arcanum-font);
+      box-sizing: border-box;
     }
 
     form.contact-form label {
@@ -199,33 +216,36 @@
       margin-left: auto;
       margin-right: auto;
       text-align: center;
+      box-sizing: border-box;
     }
 
-    /* Mobil reszponzív stílusok */
+    /* Reszponzív mobil stílusok */
     @media (max-width: 768px) {
       .nav {
         flex-direction: column;
         gap: 15px;
         margin-top: 20px;
+        align-items: center;
       }
 
       .nav a {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
-      .logo img {
-        height: auto;
-        max-width: 80vw;
-        margin: 0 auto;
+      .logo {
+        width: 90vw;
+        max-width: 400px;
+        margin-top: 20px;
       }
 
       .section-box {
-        padding: 1rem;
         width: 95%;
+        padding: 1.5rem 1rem;
       }
 
       form.contact-form {
         max-width: 100%;
+        padding: 0 1rem;
       }
 
       form.contact-form input[type="email"],
@@ -236,12 +256,27 @@
       .scroll-to-top {
         font-size: 1.5rem;
         padding: 0.4rem 0.8rem;
+        bottom: 20px;
+        right: 20px;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
       .nav a {
+        font-size: 1.3rem;
+        padding: 0 10px;
+      }
+
+      .logo {
+        max-width: 300px;
+        margin-top: 15px;
+      }
+
+      .scroll-to-top {
         font-size: 1.2rem;
+        padding: 0.3rem 0.6rem;
+        bottom: 15px;
+        right: 15px;
       }
     }
   </style>
@@ -251,12 +286,12 @@
     <img src="ChatGPT Image 2025. jún. 19. 21_40_48.png" alt="Arcanum Consulting logó" />
   </div>
 
-  <div class="nav">
+  <nav class="nav">
     <a href="#szolgaltatasok">Szolgáltatások</a>
     <a href="#rolunk">Rólunk</a>
     <a href="#referenciak">Referenciák</a>
     <a href="#elerhetoseg">Elérhetőség</a>
-  </div>
+  </nav>
 
   <div class="divider"></div>
 
@@ -264,7 +299,7 @@
     <h2 style="text-align: center; font-size: 2.5rem;">Szolgáltatásaink</h2>
 
     <div class="accordion">
-      <img src="melystruktura_logo_cropped.png" alt="Mélystruktúra logó" style="height: 300px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="melystruktura_logo_cropped.png" alt="Mélystruktúra logó" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>90 perc – 120.000 Ft</p>
@@ -272,7 +307,7 @@
     </div>
 
     <div class="accordion">
-      <img src="rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" style="height: 380px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>75 perc – 95.000 Ft</p>
@@ -280,7 +315,7 @@
     </div>
 
     <div class="accordion">
-      <img src="allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" style="height: 190px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>290.000 Ft / hó</p>
