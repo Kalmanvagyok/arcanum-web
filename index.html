@@ -21,7 +21,7 @@
     }
 
     body {
-      background-image: url('leather.png');
+      background-image: url('images/leather.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -200,11 +200,55 @@
       margin-right: auto;
       text-align: center;
     }
+
+    /* Mobil reszponzív stílusok */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .nav a {
+        font-size: 1.5rem;
+      }
+
+      .logo img {
+        height: auto;
+        max-width: 80vw;
+        margin: 0 auto;
+      }
+
+      .section-box {
+        padding: 1rem;
+        width: 95%;
+      }
+
+      form.contact-form {
+        max-width: 100%;
+      }
+
+      form.contact-form input[type="email"],
+      form.contact-form textarea {
+        font-size: 1rem;
+      }
+
+      .scroll-to-top {
+        font-size: 1.5rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .nav a {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="logo">
-    <img src="ChatGPT Image 2025. jún. 19. 21_40_48.png" alt="Arcanum Consulting logó" />
+    <img src="images/ChatGPT Image 2025. jún. 19. 21_40_48.png" alt="Arcanum Consulting logó" />
   </div>
 
   <div class="nav">
@@ -220,7 +264,7 @@
     <h2 style="text-align: center; font-size: 2.5rem;">Szolgáltatásaink</h2>
 
     <div class="accordion">
-      <img src="melystruktura_logo_cropped.png" alt="Mélystruktúra logó" style="height: 300px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="images/melystruktura_logo_cropped.png" alt="Mélystruktúra logó" style="height: 300px; max-width: 100%; margin: 2rem auto; display: block;" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>90 perc – 120.000 Ft</p>
@@ -228,7 +272,7 @@
     </div>
 
     <div class="accordion">
-      <img src="rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" style="height: 380px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="images/rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" style="height: 380px; max-width: 100%; margin: 2rem auto; display: block;" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>75 perc – 95.000 Ft</p>
@@ -236,7 +280,7 @@
     </div>
 
     <div class="accordion">
-      <img src="allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" style="height: 190px; max-width: 100%; margin: 2rem auto; display: block;" />
+      <img src="images/allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" style="height: 190px; max-width: 100%; margin: 2rem auto; display: block;" />
     </div>
     <div class="panel" style="max-width: 500px;">
       <p>290.000 Ft / hó</p>
