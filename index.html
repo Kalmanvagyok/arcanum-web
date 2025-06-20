@@ -22,10 +22,11 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-attachment: fixed; /* csak desktopon */
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-sizing: border-box;
     }
 
     .logo {
@@ -221,6 +222,9 @@
 
     /* Reszponzív mobil stílusok */
     @media (max-width: 768px) {
+      html, body {
+        background-attachment: scroll; /* mobilon ne legyen fixed */
+      }
       .nav {
         flex-direction: column;
         gap: 15px;
