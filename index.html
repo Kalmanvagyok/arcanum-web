@@ -4,44 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARCANUM</title>
+  <meta name="description" content="Az ARCANUM exkluzív emberismereti tanácsadás vezetőknek és döntéshozóknak. Az első benyomás ereje, testbeszéd és jelenlét alapú karakterelemzés.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --arcanum-gold: #d4af37;
       --arcanum-font: 'Cinzel', serif;
     }
 
-    /* Háttér div */
-    #background {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-image: url('leather.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      z-index: -1; /* a tartalom mögött */
-    }
-
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      width: 100%;
-      min-height: 100%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       font-family: var(--arcanum-font);
       color: var(--arcanum-gold);
+      background: url('leather.png') center center / cover no-repeat fixed;
       text-transform: uppercase;
-      box-sizing: border-box;
-      background: transparent; /* háttér a div-en */
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
+    }
+
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('leather.png') center center / cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease 2s forwards;
+    }
+
+    .intro img {
+      width: 576px;
+      max-width: 90vw;
+      height: auto;
+      animation: zoomIn 2s ease;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .logo {
       margin-top: 40px;
-      max-width: 95vw;
-      width: 600px;
+      width: 480px;
+      max-width: 90vw;
       z-index: 1;
     }
 
@@ -58,9 +94,8 @@
       gap: 60px;
       margin-top: 30px;
       flex-wrap: wrap;
-      max-width: 1000px;
       width: 90%;
-      z-index: 1;
+      max-width: 1000px;
     }
 
     .nav a {
@@ -68,164 +103,95 @@
       font-size: 2rem;
       color: var(--arcanum-gold);
       transition: color 0.3s ease, transform 0.2s ease;
-      white-space: nowrap;
     }
 
     .nav a:hover {
-      color: #fff;
+      color: white;
       transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .nav a {
+        font-size: 1.3rem;
+      }
     }
 
     .divider {
       width: 80%;
-      max-width: 1000px;
       height: 2px;
       background: linear-gradient(to right, transparent, var(--arcanum-gold), transparent);
-      margin: 40px auto 0 auto;
+      margin: 40px auto;
       opacity: 0.6;
-      z-index: 1;
-    }
-
-    .section-box {
-      border: 2px solid var(--arcanum-gold);
-      padding: 2rem;
-      margin: 4rem auto;
-      max-width: 1000px;
-      width: 90%;
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(1.5px);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-      box-sizing: border-box;
-      z-index: 1;
     }
 
     .accordion {
       cursor: pointer;
-      padding: 1rem;
-      margin: 2rem auto 0 auto;
-      background-color: rgba(0, 0, 0, 0.1);
-      font-size: 1.2rem;
+      background: none;
+      border: none;
       max-width: 800px;
       width: 90%;
-      border: none;
-      text-align: center;
-      z-index: 1;
+      margin: 2rem auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+      flex-direction: column;
+    }
+
+    .accordion img {
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion:hover img {
+      transform: scale(1.1);
+    }
+
+    .accordion img.rejtett {
+      transform: scale(1.452);
+    }
+
+    .accordion:hover img.rejtett {
+      transform: scale(1.597);
     }
 
     .panel {
-      display: none;
-      padding: 1rem;
+      max-height: 0;
+      overflow: hidden;
       font-size: 1rem;
+      max-width: 600px;
+      width: 90%;
+      margin: 0 auto;
+      background: none;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      text-align: center;
+    }
+
+    .panel.open {
+      max-height: 300px;
+      padding: 1.5rem 1rem;
+    }
+
+    .content-section {
       max-width: 800px;
       width: 90%;
-      margin: 0 auto 2rem auto;
-      border: 2px solid var(--arcanum-gold);
-      background: rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(1.5px);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-      box-sizing: border-box;
-      z-index: 1;
-    }
-
-    /* Logók mérete */
-    .accordion img {
-      max-width: 100%;
-      height: auto;
-      margin: 2rem auto;
-      display: block;
-      max-height: 300px; /* Desktop max magasság */
-    }
-
-    @media (max-width: 768px) {
-      .accordion img {
-        max-height: 180px; /* Tablet és kisebb */
-      }
-      .nav {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-        align-items: center;
-      }
-
-      .nav a {
-        font-size: 1.6rem;
-      }
-
-      .logo {
-        width: 90vw;
-        max-width: 400px;
-        margin-top: 20px;
-      }
-
-      .section-box {
-        width: 95%;
-        padding: 1.5rem 1rem;
-      }
-
-      form.contact-form {
-        max-width: 100%;
-        padding: 0 1rem;
-      }
-
-      form.contact-form input[type="email"],
-      form.contact-form textarea {
-        font-size: 1rem;
-      }
-
-      .scroll-to-top {
-        font-size: 1.5rem;
-        padding: 0.4rem 0.8rem;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .accordion img {
-        max-height: 150px; /* Kis képernyőn kisebb */
-      }
-      .nav a {
-        font-size: 1.3rem;
-        padding: 0 10px;
-      }
-
-      .logo {
-        max-width: 300px;
-        margin-top: 15px;
-      }
-
-      .scroll-to-top {
-        font-size: 1.2rem;
-        padding: 0.3rem 0.6rem;
-        bottom: 15px;
-        right: 15px;
-      }
-      /* Szolgáltatásaink cím mobilra optimalizálva */
-      #szolgaltatasok h2 {
-        font-size: 1.8rem !important;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        padding: 0 0.5rem;
-      }
-    }
-
-    .scroll-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: rgba(0, 0, 0, 0.3);
-      border: 2px solid var(--arcanum-gold);
+      margin: 4rem auto;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 1.1rem;
       color: var(--arcanum-gold);
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 999;
-      transition: background-color 0.3s ease;
     }
 
-    .scroll-to-top:hover {
-      background-color: rgba(212, 175, 55, 0.1);
+    .content-section::before {
+      content: "";
+      display: block;
+      width: 80%;
+      height: 2px;
+      margin: 40px auto;
+      background: linear-gradient(to right, transparent, var(--arcanum-gold), transparent);
+      opacity: 0.6;
     }
 
     form.contact-form {
@@ -235,17 +201,12 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      font-family: var(--arcanum-font);
-      box-sizing: border-box;
-      z-index: 1;
     }
 
     form.contact-form label {
       font-weight: 600;
-      color: var(--arcanum-gold);
       letter-spacing: 0.1em;
       font-size: 1rem;
-      display: block;
     }
 
     form.contact-form input[type="email"],
@@ -256,65 +217,117 @@
       color: var(--arcanum-gold);
       font-size: 1rem;
       padding: 0.85rem 1rem;
-      text-transform: uppercase;
       resize: vertical;
-      box-sizing: border-box;
-      margin-top: 0.3rem;
-    }
-
-    form.contact-form input::placeholder,
-    form.contact-form textarea::placeholder {
-      color: var(--arcanum-gold);
-      opacity: 0.7;
-    }
-
-    form.contact-form input:focus,
-    form.contact-form textarea:focus {
-      outline: none;
-      border-color: #b08a27;
-      background-color: rgba(212, 175, 55, 0.1);
     }
 
     form.contact-form button {
-      align-self: flex-start;
       background-color: var(--arcanum-gold);
-      border: none;
       color: black;
+      border: none;
       font-weight: 700;
       font-size: 1rem;
       padding: 0.85rem 2.5rem;
       border-radius: 1.2rem;
       cursor: pointer;
       text-transform: uppercase;
-      transition: opacity 0.25s ease;
+      align-self: center;
+    }
+
+    #formResponse {
+      text-align: center;
       margin-top: 1rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
-    form.contact-form button:hover,
-    form.contact-form button:focus {
-      opacity: 0.85;
+    #formResponse.visible {
+      opacity: 1;
     }
 
-    div.contact-info {
+    .contact-info {
       margin-top: 3.5rem;
       font-size: 0.9rem;
       letter-spacing: 0.12em;
       line-height: 1.5;
-      color: var(--arcanum-gold);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
-      box-sizing: border-box;
-      z-index: 1;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--arcanum-gold);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--arcanum-gold);
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      opacity: 0.7;
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".accordion").forEach((accordion, index) => {
+        accordion.addEventListener("click", () => {
+          const panel = document.querySelectorAll(".panel")[index];
+          panel.classList.toggle("open");
+        });
+      });
+
+      const scrollBtn = document.getElementById("scrollToTop");
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      const form = document.getElementById("contactForm");
+      const response = document.getElementById("formResponse");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        }).then(responseObj => {
+          if (responseObj.ok) {
+            response.textContent = "Üzenet elküldve! Köszönjük a megkeresést.";
+            response.classList.add("visible");
+            form.reset();
+          } else {
+            response.textContent = "Hiba történt az üzenetküldés során. Kérlek próbáld újra.";
+            response.classList.add("visible");
+          }
+        }).catch(() => {
+          response.textContent = "Technikai hiba. Kérlek próbáld meg később.";
+          response.classList.add("visible");
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-  <div id="background"></div>
+  <div class="intro">
+    <img src="images/arcanum_logo.png" alt="Arcanum kezdő logó">
+  </div>
 
   <div class="logo">
-    <img src="ChatGPT Image 2025. jún. 19. 21_40_48.png" alt="Arcanum Consulting logó" />
+    <img src="images/arcanum_logo.png" alt="Arcanum Consulting logó" />
   </div>
 
   <nav class="nav">
@@ -326,118 +339,69 @@
 
   <div class="divider"></div>
 
-  <section id="szolgaltatasok" class="section-box">
-    <h2 style="text-align: center; font-size: 2.5rem;">Szolgáltatásaink</h2>
+  <section id="szolgaltatasok" class="content-section">
+    <h2>Szolgáltatásaink</h2>
 
     <div class="accordion">
-      <img src="melystruktura_logo_cropped.png" alt="Mélystruktúra logó" />
+      <img src="images/melystruktura_logo_cropped.png" alt="Mélystruktúra logó">
     </div>
-    <div class="panel" style="max-width: 500px;">
+    <div class="panel">
       <p>90 perc – 120.000 Ft</p>
-      <p>Mély személyes vagy üzleti helyzeti átvilágítás. A döntési mechanizmusok, működési minták és rejtett motivációk feltérképezése. Stratégiai jövőépítés és személyes belső rend megalapozása.</p>
+      <p>Mély személyes vagy üzleti helyzeti átvilágítás...</p>
     </div>
 
+    <div class="divider"></div>
+
     <div class="accordion">
-      <img src="rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" />
+      <img src="images/rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" class="rejtett">
     </div>
-    <div class="panel" style="max-width: 500px;">
+    <div class="panel">
       <p>75 perc – 95.000 Ft</p>
-      <p>Kapcsolati és csoportdinamikai mintázatok feltárása. Lojalitások, feszültségek és befolyási tengelyek értelmezése. Pozíciók, rejtett mozgatórugók és kommunikációs minták mélyelemzése.</p>
+      <p>Kapcsolati és csoportdinamikai mintázatok feltárása...</p>
     </div>
+
+    <div class="divider"></div>
 
     <div class="accordion">
-      <img src="allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" />
+      <img src="images/allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó">
     </div>
-    <div class="panel" style="max-width: 500px;">
+    <div class="panel">
       <p>290.000 Ft / hó</p>
-      <p>Havidíjas privát hozzáférés Kálmánhoz személyes és telefonos konzultációk formájában. Teljes körű stratégiai emberismereti támogatás vezetők és döntéshozók számára – bizalom, diszkréció és mélység.</p>
+      <p>Havidíjas privát hozzáférés Kálmánhoz...</p>
     </div>
   </section>
 
-  <section id="rolunk" class="section-box">
+  <section id="rolunk" class="content-section">
     <h2>Rólunk</h2>
-    <p>Az ARCANUM az emberi karakter mély megértésére épül. A tanácsadás során testbeszédből, jelenlétből és stílusból olvassuk ki a valódi személyiséget. Kizárólag személyesen dolgozunk, mert az igazság a valóságban mutatkozik meg – nem online és nem algoritmusok alapján.</p>
+    <p>Az ARCANUM az emberi karakter mély megértésére épül...</p>
   </section>
 
-  <section id="referenciak" class="section-box">
+  <section id="referenciak" class="content-section">
     <h2>Referenciák</h2>
-    <p>"Kálmán tanácsai segítettek meglátni azt, amit a legjobban rejtett a látszat. Precíz, őszinte, lényegre törő – igazi stratégiai előnyt jelentett a döntésemben."</p>
-    <p>"Olyan dolgokat vett észre egy találkozóból, amit hónapok alatt sem sikerült volna felfedeznem. Az ARCANUM valóban első látásra működik."</p>
+    <p>"Kálmán tanácsai segítettek meglátni..."</p>
+    <p>"Olyan dolgokat vett észre..."</p>
   </section>
 
-  <section id="elerhetoseg" class="section-box">
+  <section id="elerhetoseg" class="content-section">
     <h2>Elérhetőség</h2>
     <form id="contactForm" class="contact-form" action="https://formspree.io/f/mvgrbrjo" method="POST" novalidate>
-      <label for="email">Your email:</label>
-      <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email" aria-required="true" />
-      <label for="message">Your message:</label>
-      <textarea id="message" name="message" rows="6" placeholder="Üzenet" required aria-required="true"></textarea>
-      <button type="submit">Send</button>
+      <label for="email">E-mail cím:</label>
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <label for="message">Üzenet:</label>
+      <textarea id="message" name="message" rows="6" placeholder="Üzenet" required></textarea>
+      <button type="submit">Küldés</button>
     </form>
-    <div id="formResponse" style="margin-top:1rem; font-weight: 700;"></div>
+    <div id="formResponse"></div>
     <div class="contact-info">
-      <p>Email: info@arcanumconsulting.hu</p>
+      <p>E-mail: info@arcanumconsulting.hu</p>
       <p>Helyszín: Személyes tanácsadás előre egyeztetett helyszínen</p>
     </div>
   </section>
 
   <div id="scrollToTop" class="scroll-to-top">↑</div>
 
-  <script>
-    // Akordeon működés
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach((acc) => {
-      acc.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-
-    // Scroll to top gomb működés
-    const scrollBtn = document.getElementById('scrollToTop');
-    if (scrollBtn) {
-      scrollBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // Form ajax küldés
-    const form = document.getElementById('contactForm');
-    const responseDiv = document.getElementById('formResponse');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          responseDiv.style.color = 'var(--arcanum-gold)';
-          responseDiv.textContent = 'Köszönjük az üzeneted! Hamarosan válaszolunk.';
-          form.reset();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          response.json().then(data => {
-            responseDiv.style.color = 'red';
-            if (data.errors) {
-              responseDiv.textContent = data.errors.map(error => error.message).join(', ');
-            } else {
-              responseDiv.textContent = 'Hiba történt, kérlek próbáld újra később.';
-            }
-          });
-        }
-      }).catch(() => {
-        responseDiv.style.color = 'red';
-        responseDiv.textContent = 'Hiba történt, kérlek próbáld újra később.';
-      });
-    });
-  </script>
+  <footer>
+    <p>© 2025 ARCANUM | Minden jog fenntartva</p>
+  </footer>
 </body>
 </html>
