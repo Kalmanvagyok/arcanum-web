@@ -37,10 +37,11 @@
       align-items: center;
       min-height: 100vh;
     }
-    /* Mobil háttérkép cseréje */
+    /* Mobil háttérkép cseréje és fixed eltávolítása */
     @media (max-width: 600px) {
       body {
-        background: url('leather-mobile.png') center center / cover no-repeat fixed;
+        background: url('leather-mobile.png') center center / cover no-repeat;
+        /* fixed eltávolítva */
       }
     }
     .logo {
