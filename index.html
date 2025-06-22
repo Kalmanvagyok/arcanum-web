@@ -37,6 +37,12 @@
       align-items: center;
       min-height: 100vh;
     }
+    /* Mobil háttérkép cseréje */
+    @media (max-width: 600px) {
+      body {
+        background: url('leather-mobile.png') center center / cover no-repeat fixed;
+      }
+    }
     .logo {
       margin-top: 60px;
       width: 600px;
@@ -186,10 +192,10 @@
       width: 346px !important;
       max-width: 90vw !important;
       display: block;
-      margin: 2rem auto 0.5rem auto; /* alul 0.5remre csökkentve */
+      margin: 2rem auto 0.1rem auto;
     }
     .elso-lepes-logo + .divider {
-      margin-top: 0.5rem; /* közelebb a logóhoz */
+      margin-top: 0.1rem;
       margin-bottom: 40px;
     }
     .allando-logo-nagy {
@@ -288,36 +294,30 @@
         font-size: 1.3rem;
         white-space: nowrap;
         flex-shrink: 0;
-```
-
-
-```
-  }
-  .logo {
-    width: 350px;
-    margin-top: 30px;
-  }
-  .accordion img {
-    max-width: 180px;
-  }
-  .content-section {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  form.contact-form {
-    padding: 0 1rem;
-    color: var(--arcanum-gold);
-  }
-  .cta-container {
-    margin: 1.5rem 0 2rem 0;
-  }
-  .cta-button {
-    font-size: 1rem;
-    padding: 0.85rem 2rem;
-  }
-}
-```
-
+      }
+      .logo {
+        width: 350px;
+        margin-top: 30px;
+      }
+      .accordion img {
+        max-width: 180px;
+      }
+      .content-section {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      form.contact-form {
+        padding: 0 1rem;
+        color: var(--arcanum-gold);
+      }
+      .cta-container {
+        margin: 1.5rem 0 2rem 0;
+      }
+      .cta-button {
+        font-size: 1rem;
+        padding: 0.85rem 2rem;
+      }
+    }
   </style>
 
   <script>
@@ -375,7 +375,6 @@
       }
     });
   </script>
-
 </head>
 <body>
 
@@ -384,7 +383,6 @@
   </div>
 
   <!-- CTA gomb a fejléc és menüsor között -->
-
   <div class="cta-container">
     <a href="#elerhetoseg" class="cta-button">Vegye fel velünk a kapcsolatot a személyre szabott tanácsadásért</a>
   </div>
@@ -472,4 +470,3 @@
 
 </body>
 </html>
-```
