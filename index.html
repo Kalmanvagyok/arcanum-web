@@ -76,7 +76,7 @@
     .nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 40px;
       margin-top: 40px;
       flex-wrap: wrap;
       width: 90%;
@@ -85,14 +85,14 @@
     }
     .nav a {
       text-decoration: none;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: var(--arcanum-gold);
       transition: color 0.3s ease, transform 0.2s ease;
       white-space: nowrap;
       flex-shrink: 0;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      border-radius: 6px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
       box-sizing: border-box;
     }
     .nav a:hover {
@@ -280,9 +280,9 @@
         font-size: 1.4rem !important;
         white-space: normal !important;
         flex-shrink: 0;
-        padding: 0.25rem 0.6rem !important;
-        border: 1px solid rgba(212, 175, 55, 0.3) !important;
-        border-radius: 6px !important;
+        padding: 0;
+        border: none !important;
+        border-radius: 0 !important;
       }
       .logo {
         width: 350px;
@@ -368,7 +368,6 @@
 
   <nav class="nav">
     <a href="#rolunk">Rólunk</a>
-    <a href="#kiknek">Kiknek szól</a>
     <a href="#referenciak">Referenciák</a>
     <a href="#szolgaltatasok">Szolgáltatások</a>
     <a href="#elerhetoseg">Elérhetőség</a>
@@ -377,11 +376,6 @@
   <section id="rolunk" class="content-section">
     <h2>Rólunk</h2>
     <p>Az ARCANUM az emberi karakter mély megértésére épül...</p>
-  </section>
-
-  <section id="kiknek" class="content-section">
-    <h2>Kiknek szól</h2>
-    <p>Azok számára, akik egy összetett élethelyzetben keresnek mélyebb rálátást...</p>
   </section>
 
   <section id="referenciak" class="content-section">
