@@ -83,6 +83,10 @@
       max-width: 1200px;
       overflow-x: hidden;
     }
+    .nav-item {
+      overflow: hidden;
+      display: inline-block;
+    }
     .nav a {
       position: relative;
       text-decoration: none;
@@ -91,12 +95,14 @@
       padding: 0 12px;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      transform-origin: center center;
+      transition: color 0.3s ease, transform 0.3s ease;
       text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
     .nav a:hover {
       color: white;
-      transform: translateY(-2px);
+      transform: scale(1.1);
     }
 
     .divider {
@@ -110,29 +116,32 @@
       cursor: pointer;
       background: none;
       border: none;
-      max-width: 800px;
-      width: 90%;
-      margin: 2rem auto 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s ease;
-      flex-direction: column;
+      margin: 1rem 0;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
     }
-    .accordion img {
-      max-width: 240px;
-      width: 100%;
-      height: auto;
+    .rolunk-submenu {
+      cursor: pointer;
       transition: transform 0.3s ease;
+      font-weight: 700;
+    }
+    .rolunk-submenu:hover {
+      transform: scale(1.1);
+    }
+    /* Csak a RÓLUNK elem nagyobbítása */
+    .accordion.rolunk-header {
+      font-size: 2rem;
+      letter-spacing: 0.1em;
     }
     .accordion:hover img {
       transform: scale(1.1);
     }
-    .accordion img.rejtett {
-      transform: scale(1.452);
+    .nav a {
+      transition: transform 0.3s ease;
     }
-    .accordion:hover img.rejtett {
-      transform: scale(1.597);
+    .nav a:hover {
+      transform: scale(1.1);
     }
     .panel {
       max-height: 0;
@@ -146,7 +155,7 @@
       text-align: center;
     }
     .panel.open {
-      max-height: 300px;
+      max-height: 1000px;
       padding: 1.5rem 1rem;
     }
     #rolunk {
@@ -160,7 +169,6 @@
       line-height: 1.8;
       font-size: 1.2rem;
       color: var(--arcanum-gold);
-      /* background-color: rgba(0, 0, 0, 0.2); */ /* háttér eltávolítva */
       padding: 0;
       border-radius: 0;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -178,7 +186,7 @@
       content: none;
     }
     .elso-lepes-logo {
-      width: 346px !important;
+      width: 260px !important;
       max-width: 90vw !important;
       display: block;
       margin: 2rem auto 0.1rem auto;
@@ -187,12 +195,29 @@
       margin-top: 0.1rem;
       margin-bottom: 40px;
     }
-    .allando-logo-nagy {
-      transform: scale(1.2);
+    /* Első logó alapból 1,3-szoros méret */
+    .accordion:nth-of-type(1) img {
+      max-width: 234px; /* 180px * 1.3 */
+      width: 100%;
+      height: auto;
       transition: transform 0.3s ease;
     }
-    .allando-logo-nagy:hover {
-      transform: scale(1.44);
+    /* Hoverkor még nagyobb lesz */
+    .accordion:nth-of-type(1):hover img {
+      transform: scale(1.3);
+    }
+    /* Második logó inline stílussal: max-width 324px */
+    /* Így biztos az inline stílus felülír minden mást */
+    .accordion:nth-of-type(2) > img.rejtett {
+      transition: transform 0.3s ease;
+    }
+    /* Harmadik logó inline stílussal: max-width 238px */
+    .accordion:nth-of-type(3) > img.allando-logo-nagy {
+      max-width: 238px !important; /* 216px * 1.1 */
+      width: 100% !important;
+      height: auto !important;
+      transition: transform 0.3s ease;
+      transform: scale(1);
     }
     form.contact-form {
       max-width: 480px;
@@ -322,17 +347,26 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const accordions = document.querySelectorAll(".accordion");
-      const panels = document.querySelectorAll(".panel");
 
-      accordions.forEach((accordion, index) => {
-        accordion.addEventListener("click", () => {
-          panels.forEach((panel, i) => {
-            if (i === index) {
-              panel.classList.toggle("open");
-            } else {
-              panel.classList.remove("open");
-            }
+      accordions.forEach((accordion) => {
+        accordion.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const panel = accordion.nextElementSibling;
+
+          if (!panel || !panel.classList.contains("panel")) return;
+
+          const isOpen = panel.classList.contains("open");
+
+          const parentPanel = accordion.closest(".panel") || document;
+          parentPanel.querySelectorAll(":scope > .panel").forEach((p) => {
+            if (p !== panel) p.classList.remove("open");
           });
+
+          if (!isOpen) {
+            panel.classList.add("open");
+          } else {
+            panel.classList.remove("open");
+          }
         });
       });
 
@@ -384,15 +418,35 @@
   </div>
 
   <nav class="nav">
-    <a href="#rolunk">Rólunk</a>
-    <a href="#referenciak">Referenciák</a>
-    <a href="#szolgaltatasok">Szolgáltatások</a>
-    <a href="#elerhetoseg">Elérhetőség</a>
+    <div class="nav-item"><a href="#rolunk">Rólunk</a></div>
+    <div class="nav-item"><a href="#referenciak">Referenciák</a></div>
+    <div class="nav-item"><a href="#szolgaltatasok">Szolgáltatások</a></div>
+    <div class="nav-item"><a href="#elerhetoseg">Elérhetőség</a></div>
   </nav>
 
   <section id="rolunk" class="content-section">
-    <h2>Rólunk</h2>
-    <p>Az ARCANUM az emberi karakter mély megértésére épül...</p>
+    <div class="accordion rolunk-submenu rolunk-header">RÓLUNK</div>
+    <div class="panel">
+      <div class="accordion rolunk-submenu">Kik vagyunk mi?</div>
+      <div class="panel">
+        <p>Profi csapatunk több mint egy évtizedes tapasztalattal segíti a vezetőket abban, hogy világosan átlássák a személyes és szervezeti helyzeteket. Ha egy kinevezés előtt állnak, ha bizonytalanok valakinek az alkalmasságában, vagy ha nem értik egy kolléga viselkedését, akkor hozzánk fordulhatnak. Meghallgatjuk a történetet, kérdezünk, elemzünk és visszajelzést adunk. Nem mondjuk meg, mit tegyen – hanem megvilágítjuk a helyzet mélyebb szerkezetét, hogy a döntéshozó maga dönthessen tisztábban és magabiztosabban.</p>
+      </div>
+
+      <div class="accordion rolunk-submenu">Módszerünk</div>
+      <div class="panel">
+        <p>Elemzéseink az emberi viselkedés finom jeleinek, testbeszédnek, kommunikációs mintázatoknak és pszichológiai háttérmechanizmusoknak megfigyelésén és értelmezésén alapulnak. A cél nem a diagnózis, hanem az emberi szándékok, szerepek és dinamikák pontosabb megértése. Ez lehetővé teszi a vezetők számára, hogy tisztábban lássanak, magabiztosabban döntsenek, és hatékonyabban kezeljék a kapcsolataikat.</p>
+      </div>
+
+      <div class="accordion rolunk-submenu">Etikai alapelveink</div>
+      <div class="panel">
+        <p>Minden tanácsadásunk alapja a teljes diszkréció, a bizalmi viszony és az emberi méltóság tiszteletben tartása. Nem minősítünk, nem döntünk senki helyett, és nem manipulálunk – kizárólag tisztánlátást és megértést adunk a döntéshozóknak. Az ARCANUM módszertanát kizárólag pozitív, konstruktív célokra alkalmazzuk.</p>
+      </div>
+
+      <div class="accordion rolunk-submenu">Kiknek ajánljuk</div>
+      <div class="panel">
+        <p>Az ARCANUM szolgáltatásait olyan vezetőknek, döntéshozóknak és vállalkozóknak ajánljuk, akik érzékenyek a személyes és csoportos dinamikákra, és akik tudják: a legjobb döntések mögött gyakran nem információ, hanem emberismeret áll. Azoknak szól, akik nem érik be a felszínnel, hanem a valós mozgatórugókat akarják megérteni.</p>
+      </div>
+    </div>
   </section>
 
   <section id="referenciak" class="content-section">
@@ -412,7 +466,7 @@
     </div>
     <div class="divider"></div>
     <div class="accordion">
-      <img src="images/rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" class="rejtett" />
+      <img src="images/rejtett_dinamikak_logo_cropped.png" alt="Rejtett Dinamikák logó" class="rejtett" style="max-width:324px !important; width:100% !important; height:auto !important;" />
     </div>
     <div class="panel">
       <p>75 perc – 95.000 Ft</p>
@@ -420,7 +474,7 @@
     </div>
     <div class="divider"></div>
     <div class="accordion">
-      <img src="images/allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" class="allando-logo-nagy" />
+      <img src="images/allando_jelenlet_logo_cropped.png" alt="Állandó Jelenlét logó" class="allando-logo-nagy" style="max-width:238px !important; width:100% !important; height:auto !important;" />
     </div>
     <div class="panel">
       <p>290.000 Ft / hó</p>
@@ -428,7 +482,7 @@
     </div>
     <div class="divider"></div>
     <div class="accordion">
-      <img src="images/elso_lepes_logo_web.png" alt="Első Lépés logó" class="elso-lepes-logo" />
+      <img src="images/elso_lepes_logo_transparent.png" alt="Első Lépés logó" class="elso-lepes-logo" />
     </div>
     <div class="panel">
       <p>30 perc – 40.000 Ft</p>
