@@ -487,21 +487,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div class="accordion rolunk-submenu">Etikai alapelveink</div>
       <div class="panel">
-        <p>Minden tanácsadásunk alapja a teljes diszkréció, a bizalmi viszony és az emberi méltóság tiszteletben tartása. Nem minősítünk, nem döntünk senki helyett, és nem manipulálunk – kizárólag tisztánlátást és megértést adunk a döntéshozóknak. Az ARCANUM módszertanát kizárólag pozitív, konstruktív célokra alkalmazzuk.</p>
+        <p>Minden tanácsadásunk alapja a teljes diszkréció, a bizalmi viszony és az emberi méltóság tiszteletben tartása. Nem minősítünk, nem döntünk senki helyett, és nem befolyásolunk – kizárólag mélyebb rálátást és megértést adunk a döntéshozóknak. Az ARCANUM módszertanát kizárólag pozitív, konstruktív célokra alkalmazzuk.</p>
       </div>
 
       <div class="accordion rolunk-submenu">Kiknek ajánljuk</div>
       <div class="panel">
-        <p>Az ARCANUM szolgáltatásait olyan vezetőknek, döntéshozóknak és vállalkozóknak ajánljuk, akik érzékenyek a személyes és csoportos dinamikákra, és akik tudják: a legjobb döntések mögött gyakran nem információ, hanem emberismeret áll. Azoknak szól, akik nem érik be a felszínnel, hanem a valós mozgatórugókat akarják megérteni.</p>
+        <p>Az ARCANUM azoknak a vezetőknek és döntéshozóknak szól, akik nem érik be a látszattal. Akik pontosan tudják: az emberek gyakran álarcokat viselnek, ezért a helyes döntésekhez nemcsak a látható jelekre vagy rendszerszintű információkra, hanem az emberi szándékok és kapcsolati dinamikák mélyebb megértésére is szükség van — álarcok nélkül. Szolgáltatásunk azok számára készült, akik az emberismeretet tudatos vezetői eszközként akarják használni.</p>
       </div>
     </div>
   </section>
 
   <section id="referenciak" class="content-section">
-    <h2>Referenciák</h2>
-    <p>"Kálmán tanácsai segítettek meglátni..."</p>
-    <p>"Olyan dolgokat vett észre..."</p>
-  </section>
+  <h2>Referenciák</h2>
+  <div class="ticker-container">
+    <div class="ticker-wrapper">
+      <div class="ticker-item">"Kálmán tanácsai segítettek meglátni a rejtett motivációkat..."</div>
+      <div class="ticker-item">"Olyan dolgokat vett észre, amiket senki más..."</div>
+      <div class="ticker-item">"Egy beszélgetés után világosabbá vált a helyzetem..."</div>
+      <div class="ticker-item">"Pontosan megfogalmazta, amit én csak éreztem..."</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ticker-container {
+    width: 50%;
+    margin: 1rem auto 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 3rem;
+  }
+  .ticker-wrapper {
+    display: flex;
+    animation: ticker-scroll 18s linear infinite;
+  }
+  .ticker-item {
+    flex: none;
+    padding-right: 3rem;
+    font-size: 1.6rem;
+    color: var(--arcanum-gold);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
 
   <section id="szolgaltatasok" class="content-section">
     <h2>Szolgáltatásaink</h2>
