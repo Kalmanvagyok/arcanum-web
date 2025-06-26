@@ -310,6 +310,12 @@
     }
 
     @media (max-width: 600px) {
+  .ticker-container {
+    width: 80% !important;
+  }
+  .ticker-item {
+    font-size: 1.3rem !important;
+  }
       .nav {
         gap: 15px !important;
         margin-top: 30px;
@@ -519,7 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   .ticker-wrapper {
     display: flex;
-    animation: ticker-scroll 18s linear infinite;
+    animation: ticker-scroll 12s linear infinite;
   }
   .ticker-item {
     flex: none;
@@ -530,7 +536,9 @@ document.addEventListener("DOMContentLoaded", () => {
     white-space: nowrap;
   }
   @keyframes ticker-scroll {
-    0% { transform: translateX(100%); }
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
     100% { transform: translateX(-100%); }
   }
 </style>
