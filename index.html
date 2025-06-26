@@ -520,23 +520,25 @@ document.addEventListener("DOMContentLoaded", () => {
 <style>
   .slider-container {
   width: 90%;
-  margin: 1rem auto 0 auto;
+  margin: 4rem auto 0 auto;
   overflow: hidden;
   position: relative;
   min-height: 6rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
 }
   .slide-item {
   position: absolute;
+  bottom: 0;
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
   font-size: 1.6rem;
   color: var(--arcanum-gold);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   white-space: normal;
-    transform: translateX(100%);
+  transform: translateX(100%);
   }
   .slide-item.active {
     opacity: 1;
@@ -545,27 +547,40 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".slide-item");
-    let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".slider-container");
+  const slides = Array.from(container.querySelectorAll(".slide-item"));
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.remove("active");
-        if (i === index) {
-          slide.classList.add("active");
-        }
-      });
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    showSlide(currentIndex);
-    setInterval(nextSlide, 5000);
+  // Duplikáljuk a slide-okat, hogy legyen mit újraindítani
+  const totalSlides = slides.length;
+  slides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    container.appendChild(clone);
   });
+
+  const allSlides = container.querySelectorAll(".slide-item");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    allSlides.forEach((slide, i) => {
+      slide.classList.remove("active");
+    });
+    if (allSlides[index]) {
+      allSlides[index].classList.add("active");
+    }
+  }
+
+  function nextSlide() {
+    currentIndex++;
+    if (currentIndex >= allSlides.length) {
+      currentIndex = 0;
+    }
+    showSlide(currentIndex);
+  }
+
+  showSlide(currentIndex);
+  setInterval(nextSlide, 4000);
+});
 </script>
 
 <style>
