@@ -519,14 +519,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <style>
   .slider-container {
-  width: 90%;
+  width: 100%;
   margin: 4rem auto 0 auto;
   overflow: hidden;
   position: relative;
-  min-height: 8rem;
+  min-height: 10rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
   .slide-item {
@@ -546,10 +546,10 @@ document.addEventListener("DOMContentLoaded", () => {
   padding: 1rem;
   line-height: 1.6;
   z-index: 1;
-  display: block;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
   .slide-item.active {
   opacity: 1;
@@ -680,3 +680,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
