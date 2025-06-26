@@ -531,11 +531,11 @@ document.addEventListener("DOMContentLoaded", () => {
 }
   .slide-item {
   position: absolute;
-  top: 60%;
+  bottom: 2rem;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease;
   font-size: 1.6rem;
   color: var(--arcanum-gold);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -549,7 +549,6 @@ document.addEventListener("DOMContentLoaded", () => {
 }
   .slide-item.active {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 </style>
 
@@ -677,3 +676,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
