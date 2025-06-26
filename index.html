@@ -523,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
   margin: 4rem auto 0 auto;
   overflow: hidden;
   position: relative;
-  min-height: 6rem;
+  min-height: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -541,14 +541,15 @@ document.addEventListener("DOMContentLoaded", () => {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   white-space: normal;
   text-align: center;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 90vw;
   padding: 1rem;
   line-height: 1.6;
   z-index: 1;
   display: block;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  box-sizing: border-box;
 }
   .slide-item.active {
   opacity: 1;
