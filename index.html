@@ -505,15 +505,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <section id="referenciak" class="content-section">
   <h2>Referenciák</h2>
-  <div class="ticker-container">
-    <div class="ticker-wrapper">
-      <div class="ticker-item">"Kálmán tanácsai segítettek meglátni a rejtett motivációkat..."</div>
-      <div class="ticker-item">"Olyan dolgokat vett észre, amiket senki más..."</div>
-      <div class="ticker-item">"Egy beszélgetés után világosabbá vált a helyzetem..."</div>
-      <div class="ticker-item">"Pontosan megfogalmazta, amit én csak éreztem..."</div>
-    </div>
+  <div class="slider-container">
+  <div class="slide-item">"Kálmán tanácsai segítettek meglátni a rejtett motivációkat..."</div>
+  <div class="slide-item">"Olyan dolgokat vett észre, amiket senki más..."</div>
+  <div class="slide-item">"Egy beszélgetés után világosabbá vált a helyzetem..."</div>
+  <div class="slide-item">"Pontosan megfogalmazta, amit én csak éreztem..."</div>
+</div>
+    <div class="slide-item">"Olyan dolgokat vett észre, amiket senki más..."</div>
+    <div class="slide-item">"Egy beszélgetés után világosabbá vált a helyzetem..."</div>
+    <div class="slide-item">"Pontosan megfogalmazta, amit én csak éreztem..."</div>
   </div>
 </section>
+
+<style>
+  .slider-container {
+  width: 90%;
+  margin: 1rem auto 0 auto;
+  overflow: hidden;
+  position: relative;
+  min-height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .slide-item {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  font-size: 1.6rem;
+  color: var(--arcanum-gold);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  white-space: normal;
+    transform: translateX(100%);
+  }
+  .slide-item.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slide-item");
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    showSlide(currentIndex);
+    setInterval(nextSlide, 5000);
+  });
+</script>
 
 <style>
   .ticker-container {
