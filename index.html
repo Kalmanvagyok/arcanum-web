@@ -90,7 +90,7 @@
     .nav a {
       position: relative;
       text-decoration: none;
-      font-size: 1.4rem;
+      font-size: 1.85rem;
       color: var(--arcanum-gold);
       padding: 0 12px;
       white-space: nowrap;
@@ -151,7 +151,7 @@
       width: 90%;
       margin: 0 auto;
       background: none;
-      transition: max-height 0.5s ease, padding 0.3s ease;
+      transition: max-height 0.8s ease-in-out, padding 0.6s ease-in-out;
       text-align: center;
     }
     .panel.open {
@@ -159,7 +159,7 @@
       padding: 1.5rem 1rem;
     }
     #rolunk {
-      margin-top: 120px;
+      margin-top: 40px;
     }
     .content-section {
       max-width: 1000px;
@@ -178,7 +178,7 @@
       display: block;
       width: 80%;
       height: 2px;
-      margin: 40px auto;
+      margin-top: -10px; margin-bottom: 0;
       background: linear-gradient(to right, transparent, var(--arcanum-gold), transparent);
       opacity: 0.6;
     }
@@ -345,69 +345,117 @@
   </style>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const accordions = document.querySelectorAll(".accordion");
+document.addEventListener("DOMContentLoaded", () => {
+  const accordions = document.querySelectorAll(".accordion");
 
-      accordions.forEach((accordion) => {
-        accordion.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const panel = accordion.nextElementSibling;
+  accordions.forEach((accordion) => {
+    accordion.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const panel = accordion.nextElementSibling;
 
-          if (!panel || !panel.classList.contains("panel")) return;
+      if (!panel || !panel.classList.contains("panel")) return;
 
-          const isOpen = panel.classList.contains("open");
+      const isOpen = panel.classList.contains("open");
 
-          const parentPanel = accordion.closest(".panel") || document;
-          parentPanel.querySelectorAll(":scope > .panel").forEach((p) => {
-            if (p !== panel) p.classList.remove("open");
+      const parentPanel = accordion.closest(".panel") || document;
+      parentPanel.querySelectorAll(":scope > .panel.open").forEach((p) => {
+        if (p !== panel) {
+          p.style.height = p.scrollHeight + "px";
+          p.offsetHeight; // Force reflow
+          p.style.height = "0px";
+          p.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height') {
+              p.classList.remove("open");
+              setTimeout(() => {
+                p.style.transition = 'none';
+                p.style.height = '';
+                void p.offsetWidth;
+                p.style.transition = 'height 0.6s ease';
+              }, 80);
+              p.removeEventListener('transitionend', handler);
+            }
           });
-
-          if (!isOpen) {
-            panel.classList.add("open");
-          } else {
-            panel.classList.remove("open");
-          }
-        });
+        }
       });
 
-      const scrollBtn = document.getElementById("scrollToTop");
-      if (scrollBtn) {
-        scrollBtn.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+      if (!isOpen) {
+        panel.classList.add("open");
+        panel.style.height = panel.scrollHeight + "px";
+        panel.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName === 'height') {
+            setTimeout(() => {
+              panel.style.transition = 'none';
+              panel.style.height = '';
+              void panel.offsetWidth;
+              panel.style.transition = 'height 0.6s ease';
+            }, 80);
+            panel.removeEventListener('transitionend', handler);
+          }
         });
-      }
-
-      const form = document.getElementById("contactForm");
-      const response = document.getElementById("formResponse");
-
-      if (form && response) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(form);
-
-          fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-              Accept: "application/json"
-            }
-          }).then(responseObj => {
-            if (responseObj.ok) {
-              response.textContent = "Üzenet elküldve! Köszönjük a megkeresést.";
-              response.classList.add("visible");
-              form.reset();
-            } else {
-              response.textContent = "Hiba történt az üzenetküldés során. Kérjük, próbálja újra.";
-              response.classList.add("visible");
-            }
-          }).catch(() => {
-            response.textContent = "Technikai hiba. Kérjük, próbálja meg később.";
-            response.classList.add("visible");
-          });
+      } else {
+        panel.style.height = panel.scrollHeight + "px";
+        panel.offsetHeight; // Force reflow
+        panel.style.height = "0px";
+        panel.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName === 'height') {
+            panel.classList.remove("open");
+            setTimeout(() => {
+              panel.style.transition = 'none';
+              panel.style.height = '';
+              void panel.offsetWidth;
+              panel.style.transition = 'height 0.6s ease';
+            }, 80);
+            panel.removeEventListener('transitionend', handler);
+          }
         });
       }
     });
-  </script>
+  });
+
+  const scrollBtn = document.getElementById("scrollToTop");
+  if (scrollBtn) {
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  const form = document.getElementById("contactForm");
+  const response = document.getElementById("formResponse");
+
+  if (form && response) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      }).then(responseObj => {
+        if (responseObj.ok) {
+          response.textContent = "Üzenet elküldve! Köszönjük a megkeresést.";
+          response.classList.add("visible");
+          form.reset();
+        } else {
+          response.textContent = "Hiba történt az üzenetküldés során. Kérjük, próbálja újra.";
+          response.classList.add("visible");
+        }
+      }).catch(() => {
+        response.textContent = "Technikai hiba. Kérjük, próbálja meg később.";
+        response.classList.add("visible");
+      });
+    });
+  }
+
+  document.querySelectorAll('.panel').forEach((panel) => {
+    panel.style.overflow = 'hidden';
+    panel.style.transition = 'height 0.6s ease';
+    panel.style.height = '0px';
+  });
+});
+</script>
 </head>
 <body>
 
