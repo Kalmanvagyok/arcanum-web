@@ -364,8 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = panel.classList.contains("open");
 
-      const parentPanel = accordion.closest(".panel") || document;
-      parentPanel.querySelectorAll(":scope > .panel.open").forEach((p) => {
+      document.querySelectorAll(".panel.open").forEach((p) => {
+
         if (p !== panel) {
           p.style.height = p.scrollHeight + "px";
           p.offsetHeight; // Force reflow
@@ -680,4 +680,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
