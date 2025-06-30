@@ -353,69 +353,86 @@
 
   <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const accordions = document.querySelectorAll(".accordion");
+  const topAccordion = document.querySelector(".accordion.rolunk-header");
+  const childAccordions = document.querySelectorAll("#rolunk > .panel > .accordion");
+  const otherAccordions = Array.from(document.querySelectorAll(".accordion"))
+    .filter(acc => acc !== topAccordion && !Array.from(childAccordions).includes(acc));
 
-  accordions.forEach((accordion) => {
-    accordion.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const panel = accordion.nextElementSibling;
+  function togglePanel(panel) {
+    const isOpen = panel.classList.contains("open");
 
-      if (!panel || !panel.classList.contains("panel")) return;
-
-      const isOpen = panel.classList.contains("open");
-
-      document.querySelectorAll(".panel.open").forEach((p) => {
-
-        if (p !== panel) {
-          p.style.height = p.scrollHeight + "px";
-          p.offsetHeight; // Force reflow
-          p.style.height = "0px";
-          p.addEventListener('transitionend', function handler(e) {
-            if (e.propertyName === 'height') {
-              p.classList.remove("open");
-              setTimeout(() => {
-                p.style.transition = 'none';
-                p.style.height = '';
-                void p.offsetWidth;
-                p.style.transition = 'height 0.6s ease';
-              }, 80);
-              p.removeEventListener('transitionend', handler);
-            }
-          });
-        }
-      });
-
-      if (!isOpen) {
-        panel.classList.add("open");
-        panel.style.height = panel.scrollHeight + "px";
-        panel.addEventListener('transitionend', function handler(e) {
+    const parent = panel.parentElement;
+    parent.querySelectorAll(":scope > .panel.open").forEach((p) => {
+      if (p !== panel) {
+        p.style.height = p.scrollHeight + "px";
+        p.offsetHeight; // force reflow
+        p.style.height = "0px";
+        p.addEventListener('transitionend', function handler(e) {
           if (e.propertyName === 'height') {
-            setTimeout(() => {
-              panel.style.transition = 'none';
-              panel.style.height = '';
-              void panel.offsetWidth;
-              panel.style.transition = 'height 0.6s ease';
-            }, 80);
-            panel.removeEventListener('transitionend', handler);
-          }
-        });
-      } else {
-        panel.style.height = panel.scrollHeight + "px";
-        panel.offsetHeight; // Force reflow
-        panel.style.height = "0px";
-        panel.addEventListener('transitionend', function handler(e) {
-          if (e.propertyName === 'height') {
-            panel.classList.remove("open");
-            setTimeout(() => {
-              panel.style.transition = 'none';
-              panel.style.height = '';
-              void panel.offsetWidth;
-              panel.style.transition = 'height 0.6s ease';
-            }, 80);
-            panel.removeEventListener('transitionend', handler);
+            p.classList.remove("open");
+            p.style.transition = 'none';
+            p.style.height = '';
+            void p.offsetWidth;
+            p.style.transition = 'height 0.6s ease';
+            p.removeEventListener('transitionend', handler);
           }
         });
       }
+    });
+
+    if (!isOpen) {
+      panel.classList.add("open");
+      panel.style.height = panel.scrollHeight + "px";
+      panel.addEventListener('transitionend', function handler(e) {
+        if (e.propertyName === 'height') {
+          panel.style.transition = 'none';
+          panel.style.height = '';
+          void panel.offsetWidth;
+          panel.style.transition = 'height 0.6s ease';
+          panel.removeEventListener('transitionend', handler);
+        }
+      });
+    } else {
+      panel.style.height = panel.scrollHeight + "px";
+      panel.offsetHeight; // force reflow
+      panel.style.height = "0px";
+      panel.addEventListener('transitionend', function handler(e) {
+        if (e.propertyName === 'height') {
+          panel.classList.remove("open");
+          panel.style.transition = 'none';
+          panel.style.height = '';
+          void panel.offsetWidth;
+          panel.style.transition = 'height 0.6s ease';
+          panel.removeEventListener('transitionend', handler);
+        }
+      });
+    }
+  }
+
+  if (topAccordion) {
+    topAccordion.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const panel = topAccordion.nextElementSibling;
+      if (!panel || !panel.classList.contains("panel")) return;
+      togglePanel(panel);
+    });
+  }
+
+  childAccordions.forEach((accordion) => {
+    accordion.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const panel = accordion.nextElementSibling;
+      if (!panel || !panel.classList.contains("panel")) return;
+      togglePanel(panel);
+    });
+  });
+
+  otherAccordions.forEach((accordion) => {
+    accordion.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const panel = accordion.nextElementSibling;
+      if (!panel || !panel.classList.contains("panel")) return;
+      togglePanel(panel);
     });
   });
 
